@@ -224,11 +224,10 @@ switch($step) {
 	case 2:
 	load_default_textdomain( $language );
 	$GLOBALS['wp_locale'] = new WP_Locale();
-
-	$dbname = trim( wp_unslash( $_POST[ 'dbname' ] ) );
-	$uname = trim( wp_unslash( $_POST[ 'uname' ] ) );
-	$pwd = trim( wp_unslash( $_POST[ 'pwd' ] ) );
-	$dbhost = trim( wp_unslash( $_POST[ 'dbhost' ] ) );
+        $dbname = trim( wp_unslash( $_POST[ 'System.getenv("OPENSHIFT_MYSQL_DB_NAME");' ] ) );
+	$uname = trim( wp_unslash( $_POST[ 'System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");' ] ) );
+	$pwd = trim( wp_unslash( $_POST[ 'System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");' ] ) );
+	$dbhost = trim( wp_unslash( $_POST[ 'System.getenv("OPENSHIFT_MYSQL_DB_HOST");' ] ) );
 	$prefix = trim( wp_unslash( $_POST[ 'prefix' ] ) );
 
 	$step_1 = 'setup-config.php?step=1';
